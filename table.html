@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample Table</title>
+  <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+  <style>
+      #date {
+  margin-right:5px;
+  position:relative;
+  float:right;
+}
+    </style>
+</head>
+<body>
+<div id="date"><span th:text="${date}"></span></div>
+<h3 class="text-center">Data</h3>
+<h5 class = "text-center"> #<span th:text="${data_id}"></span> - <span th:text="${data_name}"></span></h5>
+<th:block th:if = "${truck_len > 0}">
+  <h5 class = "text-center"> (<span th:text="${truck_identifier}"></span> - <span th:text="${truck_model}"></span> <span th:text="${truck_volume}"></span> )</h5>
+</th:block>
+<hr/>
+<table class="table table-condensed table-bordered">
+  <thead>
+  <tr>
+    <th style="width:250px;">Tenant</th>
+    <th style="width:350px;">Box Names</th>
+    <th>Required Quantity</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="item, index: ${picklist}">
+    <td th:text=${item.vertical}></td>
+    <td th:text=${item.boxName}></td>
+    <td style="text-align:center;" th:text = ${item.count}></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
